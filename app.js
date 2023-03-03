@@ -8,7 +8,7 @@ var crypto = require("crypto");
 var routeLogin = require("./routes/login");
 const notFound = require("./middleware/not-found-page");
 const errorHandler = require("./middleware/error-handler");
-var routeCustomer = require("./routes/customer");
+const routeCustomer = require("./routes/customer");
 
 const connection = require("./config/database");
 
@@ -20,7 +20,7 @@ var app = express();
 
 const port = process.env.PORT || 5000;
 
-app.use(express.static("./public"));
+express.static("./public");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -43,12 +43,11 @@ app.use(
 );
 
 require("./config/passport");
-
 app.use(passport.initialize());
-
 app.use(passport.session());
 
 app.use("/", routeLogin);
+app.use("/customer", routeCustomer);
 
 app.use(notFound);
 app.use(errorHandler);

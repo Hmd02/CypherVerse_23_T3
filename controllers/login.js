@@ -8,15 +8,20 @@ const getLoginPage = asyncWrapper(async (req, res) => {
 	res.status(200).render("../public/customers/htmlfiles/login.ejs");
 });
 
-const loginCustomer = asyncWrapper(async (req, res) => {
-	console.log("wooowww");
-	res.status(200).render("../public/customers/htmlfiles/home.ejs");
-});
+const loginCustomer = async (req, res, next) => {
+	try {
+		res.status(200).redirect("/customer");
+	} catch (error) {
+		console.log(error);
+		res.redirect("/");
+	}
+};
 
 const getSignUpPage = asyncWrapper(async (req, res) => {
 	res.status(200).render("../public/customers/htmlfiles/signup.ejs");
 });
 const signUpCustomer = asyncWrapper(async (req, res) => {
+	console.log("helloooo");
 	const newUser = new Customer({
 		username: req.body.username,
 		email: req.body.email,
@@ -25,7 +30,7 @@ const signUpCustomer = asyncWrapper(async (req, res) => {
 		hash: hash,
 		salt: salt
 	});
-
+	console.log(newUser);
 	newUser.save().then((user) => {
 		console.log(user);
 	});
