@@ -11,7 +11,7 @@ const verifyCallback = (username, password, done) => {
 			}
 
 			const isValid = validPassword(password, user.hash, user.salt);
-
+			console.log(isValid);
 			if (isValid) {
 				return done(null, user);
 			} else {
@@ -32,7 +32,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((userId, done) => {
-	User.findById(userId)
+	Customer.findById(userId)
 		.then((user) => {
 			done(null, user);
 		})
