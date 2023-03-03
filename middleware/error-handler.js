@@ -1,10 +1,10 @@
+const { CustomError } = require("../errors/custom-error");
+
 const errorHandler = (err, req, res, next) => {
-	// console.log("whyyy errorr");
-	// res.locals.error = err;
-	// const status = err.status || 500;
-	// res.status(status);
-	// res.render("error");
-	return res.status(err.status).json({ msg: err });
+	if (err instanceof CustomError) {
+		return res.status(err.statusCode).json({ msg: err.message });
+	}
+	return res.status(500).json({ msg: "Something went wrong!" });
 };
 
 module.exports = errorHandler;

@@ -3,25 +3,20 @@ const router = require("express").Router();
 const passport = require("passport");
 const Customer = require("../models/customer");
 const genPassword = require("../middleware/passwordUtils").genPassword;
-
+const { createCustomError } = require("../errors/custom-error");
 const getLoginPage = asyncWrapper(async (req, res) => {
 	res.status(200).render("../public/customers/htmlfiles/login.ejs");
 });
-
-const loginCustomer = async (req, res, next) => {
-	try {
-		res.status(200).redirect("/customer");
-	} catch (error) {
-		console.log(error);
-		res.redirect("/");
-	}
-};
 
 const getSignUpPage = asyncWrapper(async (req, res) => {
 	res.status(200).render("../public/customers/htmlfiles/signup.ejs");
 });
 const signUpCustomer = asyncWrapper(async (req, res) => {
-	console.log("helloooo");
+	const saltHash = genPassword(req.body.password);
+
+	const salt = saltHash.salt;
+	const hash = saltHash.hash;
+	console.log(req.body);
 	const newUser = new Customer({
 		username: req.body.username,
 		email: req.body.email,
@@ -40,6 +35,5 @@ const signUpCustomer = asyncWrapper(async (req, res) => {
 module.exports = {
 	getLoginPage,
 	getSignUpPage,
-	signUpCustomer,
-	loginCustomer
+	signUpCustomer
 };
