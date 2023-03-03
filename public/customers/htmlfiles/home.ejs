@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Home Page</title>
+
+		<link
+			href="https://fonts.googleapis.com/css?family=Open Sans"
+			rel="stylesheet" />
+		<link rel="stylesheet" href="../../../output.css" />
+	</head>
+	<body class="h-[100%] grid grid-rows-[70px_auto]">
+		<div
+			class="navbar flex flex-row gap-5 justify-between items-center p-5 rounded-br-xl rounded-bl-xl"
+			style="
+				background-image: linear-gradient(
+					to right top,
+					#b5f1cc,
+					#c2f4cc,
+					#cef7cd,
+					#dafacf,
+					#e5fdd1
+				);
+			">
+			<div class="logo order-1">
+				<img
+					src="../../logo.png"
+					alt=""
+					class="h-[50px] w-auto rounded-xl" />
+			</div>
+
+			<div class="links order-2 flex flex-wrap gap-2 flex-row">
+				<a
+					href=""
+					class="border-slate-800 border-2 w-[150px] text-center rounded-3xl p-2 bg-white"
+					>Orders</a
+				>
+				<a
+					href=""
+					class="border-slate-800 border-2 w-[150px] text-center rounded-3xl p-2 bg-white"
+					>Profile</a
+				>
+				<a
+					href=""
+					class="border-slate-800 border-2 w-[150px] text-center rounded-3xl p-2 bg-white"
+					>Marketplace</a
+				>
+				<a
+					href=""
+					class="border-slate-800 border-2 w-[150px] text-center rounded-3xl p-2 bg-white"
+					>Settings</a
+				>
+			</div>
+			<div class="other order-3">
+				<a
+					href=""
+					class="border-slate-800 border-2 rounded-3xl p-2 bg-white"
+					>Logout</a
+				>
+			</div>
+		</div>
+		<div class="dashboard h-[85vh] grid grid-cols-[70%_30%] m-5 p-5 gap-5">
+			<div class="orders p-5 border-slate-500 border-2 h-auto rounded-xl">
+				<div class="orderHeader text-center m-2 w-full">
+					<strong>Orders</strong>
+				</div>
+				<div class="orderDetails h-auto flex flex-col flex-wrap gap-2">
+					<a href="" class="p-2 border-slate-800 border-2 rounded-xl"
+						>order1</a
+					>
+					<a href="" class="p-2 border-slate-800 border-2 rounded-xl"
+						>order2</a
+					>
+					<a href="" class="p-2 border-slate-800 border-2 rounded-xl"
+						>order3</a
+					>
+				</div>
+			</div>
+			<div class="others h-auto grid grid-rows-[50%_auto] gap-5">
+				<div
+					class="subscriptions p-2 border-slate-500 border-2 rounded-xl">
+					Subscriptions</div
+				>
+				<div
+					class="announcements p-2 border-slate-500 border-2 rounded-xl">
+					Announcements</div
+				>
+			</div>
+		</div>
+		<script
+			src="https://kit.fontawesome.com/330aa1236c.js"
+			crossorigin="anonymous"></script>
+	</body>
+</html>
